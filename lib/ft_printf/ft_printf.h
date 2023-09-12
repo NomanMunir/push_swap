@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmunir <nmunir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/11 15:58:38 by nmunir            #+#    #+#             */
-/*   Updated: 2023/09/12 21:36:48 by nmunir           ###   ########.fr       */
+/*   Created: 2023/07/20 19:26:31 by nmunir            #+#    #+#             */
+/*   Updated: 2023/07/23 18:31:51 by nmunir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-void ft_sort_3(t_stack *stack_a)
-{
-	
-}
+# include <unistd.h>
+# include <stdlib.h>
+# include <stdbool.h>
+# include <stdarg.h>
 
-int	main(int ac, char **av)
-{
-	t_stack *stack_a;
-	// printf("%s\n", ft_split(av[1], ' ')[1]);
-	if (ac > 1)
-	{
-		if (check_arg(ac, av) == 0)
-			return (0);
-		stack_a = create_stack(ac, av, stack_a);
-		ft_sort_3(stack_a);
-		print_stack(stack_a);
-	}
-	else
-		return (error_handling(1), 0);
-}
+int		ft_printf(const char *format, ...);
+int		ft_putstr(char *s);
+int		ft_putchar(int c);
+int		ft_putnbr(int nbr);
+char	*ft_itoa(int n);
+int		put_hex(unsigned int num, const char format);
+int		ft_put_unsigned_int(unsigned int n);
+int		ft_put_ptr(uintptr_t ptr);
+
+#endif

@@ -5,53 +5,37 @@
 #                                                     +:+ +:+         +:+      #
 #    By: nmunir <nmunir@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/08/10 15:18:50 by abashir           #+#    #+#              #
-#    Updated: 2023/09/12 19:41:53 by nmunir           ###   ########.fr        #
+#    Created: 2023/07/03 12:33:13 by nmunir            #+#    #+#              #
+#    Updated: 2023/09/11 18:35:57 by nmunir           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = push_swap
-
-SRC =	main.c \
-		parsing.c \
-		errors.c \
-		stack.c \
-		utils.c \
-		operations/pushs.c \
-		operations/rotates.c \
-		operations/rrotates.c \
-		operations/swaps.c \
-	
-OBJ = $(SRC:.c=.o)
-ARC = lib/libft/libft.a lib/ft_printf/libftprintf.a
-CC = cc
-
+NAME = libftprintf.a
 CFLAGS = -Wall -Werror -Wextra
+CC = cc
+OBJS = $(SRC:.c=.o)
 
-all: libft printf
-	$(CC) $(SRC) $(ARC) -o $(NAME)
-	
-libft: 
-	cd lib/libft && make
-	
-printf:
-	cd lib/ft_printf && make
+SRC =	ft_printf.c \
+		utils.c \
+		ft_itoa.c \
+		put_hex.c \
+		ft_put_unsigned_int.c \
+		ft_put_ptr.c \
+
+all: $(NAME)
+
+$(NAME): $(OBJS)
+	ar rcs $(NAME) $(OBJS)
 
 clean:
-	rm -f -v $(OBJ)
-	cd lib/libft && make clean
-	cd lib/ft_printf && make clean
-	
+	rm -f $(OBJS)
+
 fclean: clean
 	rm -f $(NAME)
-	cd lib/libft && make fclean
-	cd lib/ft_printf && make fclean
 
 re: fclean all
 
 norm:
 	norminette $(SRC)
-	cd lib/libft && make norm
-	cd lib/ft_printf && make norm
 
-.PHONY: all clean fclaen re libft printf norm
+.PHONY: all clean fclean re norm

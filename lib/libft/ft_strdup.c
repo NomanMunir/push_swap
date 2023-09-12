@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmunir <nmunir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/11 15:58:38 by nmunir            #+#    #+#             */
-/*   Updated: 2023/09/12 21:36:48 by nmunir           ###   ########.fr       */
+/*   Created: 2023/07/09 11:32:12 by nmunir            #+#    #+#             */
+/*   Updated: 2023/07/09 11:32:13 by nmunir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void ft_sort_3(t_stack *stack_a)
+char	*ft_strdup(const char *s1)
 {
-	
-}
+	char	*p;
+	size_t	len;
+	size_t	i;
 
-int	main(int ac, char **av)
-{
-	t_stack *stack_a;
-	// printf("%s\n", ft_split(av[1], ' ')[1]);
-	if (ac > 1)
+	i = 0;
+	len = ft_strlen(s1) + 1;
+	p = (char *)malloc(len * sizeof(char));
+	if (p != NULL)
 	{
-		if (check_arg(ac, av) == 0)
-			return (0);
-		stack_a = create_stack(ac, av, stack_a);
-		ft_sort_3(stack_a);
-		print_stack(stack_a);
+		while (s1[i])
+		{
+			p[i] = s1[i];
+			i++;
+		}
+		p[i] = '\0';
 	}
-	else
-		return (error_handling(1), 0);
+	return (p);
 }

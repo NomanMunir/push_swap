@@ -1,34 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmunir <nmunir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/11 15:58:38 by nmunir            #+#    #+#             */
-/*   Updated: 2023/09/12 21:36:48 by nmunir           ###   ########.fr       */
+/*   Created: 2023/07/10 15:50:09 by nmunir            #+#    #+#             */
+/*   Updated: 2023/07/15 13:58:27 by nmunir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void ft_sort_3(t_stack *stack_a)
+t_list	*ft_lstnew(void *content)
 {
-	
-}
+	t_list	*head;
 
-int	main(int ac, char **av)
-{
-	t_stack *stack_a;
-	// printf("%s\n", ft_split(av[1], ' ')[1]);
-	if (ac > 1)
+	head = malloc(sizeof(t_list));
+	if (head)
 	{
-		if (check_arg(ac, av) == 0)
-			return (0);
-		stack_a = create_stack(ac, av, stack_a);
-		ft_sort_3(stack_a);
-		print_stack(stack_a);
+		head->content = content;
+		head->next = NULL;
 	}
-	else
-		return (error_handling(1), 0);
+	return (head);
 }

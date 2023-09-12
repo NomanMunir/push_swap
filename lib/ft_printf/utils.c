@@ -1,34 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmunir <nmunir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/11 15:58:38 by nmunir            #+#    #+#             */
-/*   Updated: 2023/09/12 21:36:48 by nmunir           ###   ########.fr       */
+/*   Created: 2023/07/20 18:13:38 by nmunir            #+#    #+#             */
+/*   Updated: 2023/07/22 20:47:56 by nmunir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "ft_printf.h"
 
-void ft_sort_3(t_stack *stack_a)
+int	ft_putstr(char *s)
 {
-	
+	int	count;
+
+	count = 0;
+	if (s == NULL)
+	{
+		write(1, "(null)", 6);
+		return (6);
+	}
+	while (*s)
+	{
+		count += write(1, s, 1);
+		s++;
+	}
+	return (count);
 }
 
-int	main(int ac, char **av)
+int	ft_putchar(int c)
 {
-	t_stack *stack_a;
-	// printf("%s\n", ft_split(av[1], ' ')[1]);
-	if (ac > 1)
-	{
-		if (check_arg(ac, av) == 0)
-			return (0);
-		stack_a = create_stack(ac, av, stack_a);
-		ft_sort_3(stack_a);
-		print_stack(stack_a);
-	}
-	else
-		return (error_handling(1), 0);
+	char	n;
+
+	n = (char)c;
+	return (write(1, &n, 1));
+}
+
+int	ft_putnbr(int nbr)
+{
+	int		len;
+	char	*num;
+
+	len = 0;
+	num = ft_itoa(nbr);
+	len = ft_putstr(num);
+	free(num);
+	return (len);
 }

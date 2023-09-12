@@ -1,34 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmunir <nmunir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/11 15:58:38 by nmunir            #+#    #+#             */
-/*   Updated: 2023/09/12 21:36:48 by nmunir           ###   ########.fr       */
+/*   Created: 2023/07/09 11:40:47 by nmunir            #+#    #+#             */
+/*   Updated: 2023/07/18 14:14:29 by nmunir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void ft_sort_3(t_stack *stack_a)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	
-}
+	size_t	i;
 
-int	main(int ac, char **av)
-{
-	t_stack *stack_a;
-	// printf("%s\n", ft_split(av[1], ' ')[1]);
-	if (ac > 1)
+	if (n == 0)
+		return (0);
+	i = 0;
+	while ((s1[i] || s2[i]) && i < n)
 	{
-		if (check_arg(ac, av) == 0)
-			return (0);
-		stack_a = create_stack(ac, av, stack_a);
-		ft_sort_3(stack_a);
-		print_stack(stack_a);
+		if (s1[i] != s2[i])
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+		i++;
 	}
-	else
-		return (error_handling(1), 0);
+	return (0);
 }

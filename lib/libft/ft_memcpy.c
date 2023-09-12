@@ -1,34 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmunir <nmunir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/11 15:58:38 by nmunir            #+#    #+#             */
-/*   Updated: 2023/09/12 21:36:48 by nmunir           ###   ########.fr       */
+/*   Created: 2023/07/04 09:00:05 by nmunir            #+#    #+#             */
+/*   Updated: 2023/07/14 14:54:34 by nmunir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void ft_sort_3(t_stack *stack_a)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	
-}
+	unsigned char	*dest;
+	unsigned char	*s;
+	size_t			i;
 
-int	main(int ac, char **av)
-{
-	t_stack *stack_a;
-	// printf("%s\n", ft_split(av[1], ' ')[1]);
-	if (ac > 1)
+	if (dst == NULL && src == NULL)
+		return (NULL);
+	i = 0;
+	s = (unsigned char *)src;
+	dest = (unsigned char *)dst;
+	while (i < n)
 	{
-		if (check_arg(ac, av) == 0)
-			return (0);
-		stack_a = create_stack(ac, av, stack_a);
-		ft_sort_3(stack_a);
-		print_stack(stack_a);
+		dest[i] = s[i];
+		i++;
 	}
-	else
-		return (error_handling(1), 0);
+	return (dst);
 }
