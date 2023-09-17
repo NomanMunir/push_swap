@@ -6,7 +6,7 @@
 #    By: nmunir <nmunir@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/10 15:18:50 by abashir           #+#    #+#              #
-#    Updated: 2023/09/12 19:41:53 by nmunir           ###   ########.fr        #
+#    Updated: 2023/09/17 17:47:29 by nmunir           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ SRC =	main.c \
 		operations/rotates.c \
 		operations/rrotates.c \
 		operations/swaps.c \
+		sorting.c \
 	
 OBJ = $(SRC:.c=.o)
 ARC = lib/libft/libft.a lib/ft_printf/libftprintf.a
