@@ -1,34 +1,34 @@
 #include "../push_swap.h"
 
-void sa(t_stack **stack_a)
+static void swap(t_stack **stk)
 {
-	t_stack *tmp;
+	t_stack *head;
 
-	if (!(*stack_a) || !(*stack_a)->next)
+	if (!(*stk) || !(*stk)->next)
 		return ;
-	tmp = (*stack_a)->next;
-	(*stack_a)->next = tmp->next;
-	tmp->next = *stack_a;
-	*stack_a = tmp;
-	ft_putstr_fd("sa\n", 2);
+	head = *stk;
+	*stk = (*stk)->next;
+	(*stk)->next->prev = head;
+	head->next = (*stk)->next;
+	(*stk)->next = head;
+	(*stk)->prev = NULL;
 }
 
 void sb(t_stack **stack_b)
 {
-	t_stack *tmp;
+	swap(stack_b);
+	ft_putstr_fd("sb\n", 1);
+}
 
-	if (!(*stack_b) || !(*stack_b)->next)
-		return ;
-	tmp = (*stack_b)->next;
-	(*stack_b)->next = tmp->next;
-	tmp->next = *stack_b;
-	*stack_b = tmp;
-	ft_putstr_fd("sb\n", 2);
+void sa(t_stack **stack_a)
+{
+	swap(stack_a);
+	ft_putstr_fd("sa\n", 1);
 }
 
 void ss(t_stack **stack_a, t_stack **stack_b)
 {
 	sa(stack_a);
 	sb(stack_b);
-	ft_putstr_fd("ss\n", 2);
+	ft_putstr_fd("ss\n", 1);
 }

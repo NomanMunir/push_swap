@@ -1,40 +1,39 @@
 #include "push_swap.h"
 
-static int if_sorted(t_stack **stk)
+static bool	sorted(t_stack *stk)
 {
-	t_stack *tmp;
 
-	tmp = *stk;
-	while (tmp->next)
+	while (stk->next)
 	{
-		if (tmp->value > tmp->next->value)
-			return (0);
-		tmp = tmp->next;
+		if (stk->value > stk->next->value)
+			return (false);
+		stk = stk->next;
 	}
-	return (1);
+	return (true);
 }
 
 void	ft_sort_3(t_stack **stk)
 {
-	int	minn;
-	int	maxn;
+	t_stack	*max_node;
 
-	minn = min(*stk);
-	maxn = max(*stk);
-	if (if_sorted(stk))
+	max_node = max(*stk);
+	if (sorted(*stk))
 		return ;
-	if ((*stk)->value == maxn && (*stk)->next->value == minn)
+	max_node = max(*stk);
+	if (*stk == max_node)
 		ra(stk);
-	else if ((*stk)->value == maxn && (*stk)->next->value != minn)
-	{
-		sa(stk);
+	else if ((*stk)->next == max_node)
 		rra(stk);
-	}
-	else if ((*stk)->value != maxn && (*stk)->next->value == minn)
+	if ((*stk)->value > (*stk)->next->value)
 		sa(stk);
-	else if ((*stk)->value != maxn && (*stk)->next->value != minn)
+}
+
+void ft_sort_5(t_stack **stk_a, t_stack **stk_b)
+{
+	while(lstsize(*stk_a) > 3)
 	{
-		ra(stk);
-		ra(stk);
+		init_nodes(*stk_a, *stk_b);
+		finish_rotations(stk_a, min(*stk_a), 'a');
+		pb(stk_a, stk_b);
 	}
 }

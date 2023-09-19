@@ -1,28 +1,31 @@
 #include "push_swap.h"
 
-t_stack *add_node(t_stack *stack_a, int value)
+static void	add_node(t_stack **stk, int value)
 {
-	t_stack *new_node;
-	t_stack *tmp;
+	t_stack	*last;
+	t_stack	*node;
 
-	new_node = malloc(sizeof(t_stack));
-	if (!new_node)
-		return (NULL);
-	new_node->value = value;
-	new_node->next = NULL;
-	if (!stack_a)
-		stack_a = new_node;
+	if (!stk)
+		return ;
+	node = malloc(sizeof(t_stack));
+	if (!node)
+		return ;
+	node->value = value;
+	node->next = NULL;
+	if (!(*stk))
+		{
+			*stk = node;
+			node->prev = NULL;
+		}
 	else
 	{
-		tmp = stack_a;
-		while (tmp->next)
-			tmp = tmp->next;
-		tmp->next = new_node;
+		last = lastnode(*stk);
+		last->next = node;
+		node->prev = last;
 	}
-	return (stack_a);
 }
 
-t_stack *create_stack(int ac, char **av, t_stack *stack_a)
+void	init_stack(int ac, char **av, t_stack **stk_a)
 {
 	int i;
 
@@ -35,7 +38,7 @@ t_stack *create_stack(int ac, char **av, t_stack *stack_a)
 				i++;
 			else
 			{
-				stack_a = add_node(stack_a, ft_atoi(av[1] + i));
+				add_node(stk_a, ft_atol(av[1] + i));
 				while (av[1][i] != ' ' && av[1][i])
 					i++;
 			}
@@ -45,9 +48,8 @@ t_stack *create_stack(int ac, char **av, t_stack *stack_a)
 	{
 		while (av[i])
 		{
-			stack_a = add_node(stack_a, ft_atoi(av[i]));
+			add_node(stk_a, ft_atol(av[i]));
 			i++;
 		}
 	}
-	return (stack_a);
 }

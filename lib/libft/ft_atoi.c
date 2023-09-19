@@ -26,7 +26,13 @@ int	ft_atoi(const char *str)
 			nagetive = true;
 	}
 	while (ft_isdigit(*str))
+	{
+		if (nagetive && ((result * 10) + *str - '0') < result)
+			return (0);
+		else if (!nagetive && ((result * 10) + *str - '0') < result)
+			return (-1);
 		result = result * 10 + (*str++ - '0');
+	}
 	if (nagetive)
 		result = -result;
 	return (result);
