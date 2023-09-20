@@ -3,15 +3,12 @@
 static void	reverse_rotate(t_stack **stack)
 {
 	t_stack	*last;
-	int				len;
 
-	len = lstsize(*stack);
-	if (NULL == *stack || NULL == stack || 1 == len)
+	if (!*stack || !stack || lstsize(*stack) == 1)
 		return ;
 	last = lastnode(*stack);
 	last->prev->next = NULL;
 	last->next = *stack;
-	last->prev = NULL;
 	*stack = last;
 	last->next->prev = last;
 }

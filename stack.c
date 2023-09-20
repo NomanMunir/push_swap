@@ -28,11 +28,14 @@ static void	add_node(t_stack **stk, int value)
 void	init_stack(char **args, t_stack **stk_a)
 {
 	int i;
+	int error;
 
+	error = 0;
 	i = 0;
+	
 	while (args[i])
 	{
-		add_node(stk_a, ft_atol(args[i]));
+		add_node(stk_a, ft_atol(args[i], &error));
 		i++;
 	}
 	ft_free(args);

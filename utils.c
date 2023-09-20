@@ -102,20 +102,45 @@ t_stack *min(t_stack *stack)
 	return (smallest_node);
 }
 
-void ft_free_nodes(t_stack **a, t_stack **b)
+void ft_free_nodes(t_stack **stk)
 {
 	t_stack *tmp;
 
-	while (*a)
+	while (*stk)
 	{
-		tmp = *a;
-		*a = (*a)->next;
+		tmp = *stk;
+		*stk = (*stk)->next;
 		free(tmp);
 	}
-	while (*b)
+}
+
+long	ft_atol(const char *str, int *error)
+{
+	long long	result;
+	int			nagetive;
+
+	result = 0;
+	nagetive = 1;
+	while (*str == ' ' || (*str >= 9 && *str <= 13))
+		str++;
+	if (*str == '-' || *str == '+')
 	{
-		tmp = *b;
-		*b = (*b)->next;
-		free(tmp);
+		if (*str++ == '-')
+			nagetive = -1;
 	}
+	while (ft_isdigit(*str))
+	{
+		if (nagetive && ((result * 10) + *str - '0') < result)
+		{
+			*error = 1;
+			return (0);
+		}
+		else if (!nagetive && ((result * 10) + *str - '0') < result)
+		{
+			*error = 1;
+			return (-1);
+		}
+		result = result * 10 + (*str++ - '0');
+	}
+	return (result * nagetive);
 }

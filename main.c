@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 15:58:38 by nmunir            #+#    #+#             */
-/*   Updated: 2023/09/20 15:01:11 by codespace        ###   ########.fr       */
+/*   Updated: 2023/09/20 18:24:42 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int	main(int ac, char **av)
 	else
 		push_swap(&a, &b);
 	print_stack(a);
-	ft_free_nodes(&a, &b);
+	ft_free_nodes(&a);
+	ft_free_nodes(&b);
 	return (0);
 }
