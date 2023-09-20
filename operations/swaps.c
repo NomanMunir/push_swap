@@ -1,34 +1,36 @@
 #include "../push_swap.h"
 
-static void swap(t_stack **stk)
+static void	swap(t_stack **head)
 {
-	t_stack *head;
+	int	len;
 
-	if (!(*stk) || !(*stk)->next)
+	len = lstsize(*head);
+	if (NULL == *head || NULL == head || 1 == len)
 		return ;
-	head = *stk;
-	*stk = (*stk)->next;
-	(*stk)->next->prev = head;
-	head->next = (*stk)->next;
-	(*stk)->next = head;
-	(*stk)->prev = NULL;
+	*head = (*head)->next;
+	(*head)->prev->prev = *head;
+	(*head)->prev->next = (*head)->next;
+	if ((*head)->next)
+		(*head)->next->prev = (*head)->prev;
+	(*head)->next = (*head)->prev;
+	(*head)->prev = NULL;
 }
 
-void sb(t_stack **stack_b)
+void	sa(t_stack	**a)
 {
-	swap(stack_b);
-	ft_putstr_fd("sb\n", 1);
+	swap(a);
+		write(1, "sa\n", 3);
 }
 
-void sa(t_stack **stack_a)
+void	sb(t_stack **b)
 {
-	swap(stack_a);
-	ft_putstr_fd("sa\n", 1);
+	swap(b);
+		write(1, "sb\n", 3);
 }
 
-void ss(t_stack **stack_a, t_stack **stack_b)
+void	ss(t_stack **a, t_stack **b)
 {
-	sa(stack_a);
-	sb(stack_b);
-	ft_putstr_fd("ss\n", 1);
+	swap(a);
+	swap(b);
+		write(1, "ss\n", 3);
 }

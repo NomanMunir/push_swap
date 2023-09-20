@@ -1,37 +1,37 @@
 #include "../push_swap.h"
 
-static void push(t_stack **d, t_stack **s)
+static void	push(t_stack **dest, t_stack **src)
 {
-	t_stack *tmp;
+	t_stack	*node;
 
-	if (!*s)
+	if (NULL == *src)
 		return ;
-	tmp = *s;
-	*s = (*s)->next;
-	if (*s)
-		(*s)->prev = NULL;
-	if (!(*d))
+	node = *src;
+	*src = (*src)->next;
+	if (*src)
+		(*src)->prev = NULL;
+	node->prev = NULL;
+	if (NULL == *dest)
 	{
-		*d = tmp;
-		(*d)->next = NULL;
-		(*d)->prev = NULL;
+		*dest = node;
+		node->next = NULL;
 	}
 	else
 	{
-		tmp->next = *d;
-		(*d)->prev = tmp;
-		*d = tmp;
+		node->next = *dest;
+		node->next->prev = node;
+		*dest = node;
 	}
 }
 
-void pb(t_stack **stack_a, t_stack **stack_b)
+void	pa(t_stack **a, t_stack **b)
 {
-	push(stack_b, stack_a);
-	ft_putstr_fd("pb\n", 1);
+	push(a, b);
+	write(1, "pa\n", 3);
 }
 
-void pa(t_stack **stack_a, t_stack **stack_b)
+void	pb(t_stack **b, t_stack **a)
 {
-	push(stack_a, stack_b);
-	ft_putstr_fd("pa\n", 1);
+	push(b, a);
+	write(1, "pb\n", 3);
 }

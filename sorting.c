@@ -33,7 +33,8 @@ void ft_sort_5(t_stack **stk_a, t_stack **stk_b)
 	while(lstsize(*stk_a) > 3)
 	{
 		init_nodes(*stk_a, *stk_b);
+		// printf("%d", min(*stk_a)->value);
 		finish_rotations(stk_a, min(*stk_a), 'a');
-		pb(stk_a, stk_b);
+		pb(stk_b, stk_a);
 	}
 }

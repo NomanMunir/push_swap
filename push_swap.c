@@ -6,7 +6,7 @@
 /*   By: nmunir <nmunir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 14:21:14 by nmunir            #+#    #+#             */
-/*   Updated: 2023/09/19 15:59:55 by nmunir           ###   ########.fr       */
+/*   Updated: 2023/09/20 14:01:00 by nmunir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,20 @@ static void	rotate_both(t_stack **a, t_stack **b, \
 	set_nodes_position(*b);
 }
 
-void	finish_rotations(t_stack **stk, t_stack *small, char stack_name)
+void	finish_rotations(t_stack **stk, t_stack *top, char stack_name)
 {
-	while (*stk != small)
+	while (*stk != top)
 	{
 		if (stack_name == 'a')
 		{
-			if (small->above_median)
+			if (top->above_median)
 				ra(stk);
 			else
 				rra(stk);
 		}
 		else if (stack_name == 'b')
 		{
-			if (small->above_median)
+			if (top->above_median)
 				rb(stk);
 			else
 				rrb(stk);
@@ -76,11 +76,13 @@ void push_swap(t_stack **stk_a, t_stack **stk_b)
 	t_stack		*smallest;
 
 	len = lstsize(*stk_a);
-		while(len > 3)
-		{
-			pb(stk_a, stk_b);
-			len--;
-		}
+	if (len == 5)
+		ft_sort_5(stk_a, stk_b);
+	else
+	{
+		while (len-- > 3)
+			pb(stk_b, stk_a);
+	}
 	ft_sort_3(stk_a);
 	while(*stk_b)
 	{

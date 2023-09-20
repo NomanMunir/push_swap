@@ -1,35 +1,36 @@
 #include "../push_swap.h"
 
-static void	rotate(t_stack **stack)
+static void	reverse_rotate(t_stack **stack)
 {
-	t_stack *last;
+	t_stack	*last;
+	int				len;
 
-	if (!(*stack) || !(*stack)->next)
+	len = lstsize(*stack);
+	if (NULL == *stack || NULL == stack || 1 == len)
 		return ;
-
 	last = lastnode(*stack);
 	last->prev->next = NULL;
 	last->next = *stack;
 	last->prev = NULL;
-	(*stack)->prev = last;
 	*stack = last;
+	last->next->prev = last;
 }
 
-void rrb(t_stack **stack_b)
+void	rra(t_stack **a)
 {
-	rotate(stack_b);
-	ft_putstr_fd("rrb\n", 1);
+	reverse_rotate(a);
+	write(1, "rra\n", 4);
 }
 
-void rra(t_stack **stack_a)
+void	rrb(t_stack **b)
 {
-	rotate(stack_a);
-	ft_putstr_fd("rra\n", 1);
+	reverse_rotate(b);
+	write(1, "rrb\n", 4);
 }
 
-void rrr(t_stack **stack_a, t_stack **stack_b)
+void	rrr(t_stack **a, t_stack **b)
 {
-	rra(stack_a);
-	rrb(stack_b);
-	ft_putstr_fd("rrr\n", 1);
+	reverse_rotate(a);
+	reverse_rotate(b);
+	write(1, "rrr\n", 4);
 }

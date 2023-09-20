@@ -6,7 +6,7 @@
 /*   By: nmunir <nmunir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 18:59:52 by nmunir            #+#    #+#             */
-/*   Updated: 2023/09/19 14:09:54 by nmunir           ###   ########.fr       */
+/*   Updated: 2023/09/20 13:54:15 by nmunir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ t_stack		*min(t_stack *stack);
 t_stack		*max(t_stack *stack);
 void		ft_sort_3(t_stack **stk);
 void		ft_sort_5(t_stack **stk_a, t_stack **stk_b);
-void 		finish_rotations(t_stack **stk, t_stack *small, char stack_name);
+void 		finish_rotations(t_stack **stk, t_stack *top, char stack_name);
 int			lstsize(t_stack *stack);
 t_stack		*lastnode(t_stack *stack);
 void		init_nodes(t_stack *stk_a, t_stack *stk_b);

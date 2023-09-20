@@ -1,35 +1,36 @@
 #include "../push_swap.h"
 
-static void rotate(t_stack **stack)
+static void	rotate(t_stack **stack)
 {
-	t_stack *tmp;
-	t_stack *last;
+	t_stack	*last_node;
+	int				len;
 
-	if (!(*stack) || !(*stack)->next)
+	len = lstsize(*stack);
+	if (NULL == stack || NULL == *stack || 1 == len)
 		return ;
-	tmp = *stack;
+	last_node = lastnode(*stack);
+	last_node->next = *stack;
 	*stack = (*stack)->next;
-	last = lastnode(*stack);
-	last->next = tmp;
-	last->next->prev = last;
-	tmp->next = NULL;
+	(*stack)->prev = NULL;
+	last_node->next->prev = last_node;
+	last_node->next->next = NULL;
+}	
+
+void	ra(t_stack **a)
+{
+	rotate(a);
+	write(1, "ra\n", 3);
 }
 
-void rb(t_stack **stack_b)
+void	rb(t_stack **b)
 {
-	rotate(stack_b);
-	ft_putstr_fd("rb\n", 1);
+	rotate(b);
+	write(1, "rb\n", 3);
 }
 
-void ra(t_stack **stack_a)
+void	rr(t_stack **a, t_stack **b)
 {
-	rotate(stack_a);
-	ft_putstr_fd("ra\n", 1);
-}
-
-void rr(t_stack **stack_a, t_stack **stack_b)
-{
-	ra(stack_a);
-	rb(stack_b);
-	ft_putstr_fd("rr\n", 1);
+	rotate(a);
+	rotate(b);
+	write(1, "rr\n", 3);
 }

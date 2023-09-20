@@ -68,7 +68,7 @@ t_stack	*max(t_stack *stack)
 	int max;
 	t_stack *max_node;
 
-	max = stack->value;
+	max = INT_MIN;
 	max_node = NULL;
 	while (stack)
 	{
@@ -84,19 +84,20 @@ t_stack	*max(t_stack *stack)
 
 t_stack *min(t_stack *stack)
 {
-	int min;
-	t_stack *min_node;
+	long			smallest;
+	t_stack			*smallest_node;
 
-	min = stack->value;
-	min_node = NULL;
+	if (NULL == stack)
+		return (NULL);
+	smallest = LONG_MAX;
 	while (stack)
 	{
-		if (stack->value < min)
+		if (stack->value < smallest)
 		{
-			min = stack->value;
-			min_node = stack;
+			smallest = stack->value;
+			smallest_node = stack;
 		}
 		stack = stack->next;
 	}
-	return (min_node);
+	return (smallest_node);
 }
