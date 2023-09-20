@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: nmunir <nmunir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 17:53:25 by nmunir            #+#    #+#             */
-/*   Updated: 2023/09/20 11:04:48 by codespace        ###   ########.fr       */
+/*   Updated: 2023/09/20 15:16:56 by nmunir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,23 +64,19 @@ int ft_isspace(char *str)
 	return (0);
 }
 
-void check_arg(int ac, char **av)
+static char **create_args(int ac, char **av)
 {
-	int		i;
-	long	tmp;
 	char	*tmp_arg;
 	char	*args;
 	char	**split;
+	int		i;
 
-	i = 0;
-	av++;
-	args = ft_strjoin(av[i++], " ");
-	if (ft_isspace(av[0]))
-		error_handling("Error!");
+	i = 1;
 	while(av[i])
 	{
 	if (ft_isspace(av[i]))
 		error_handling("Error!");
+		args = ft_strjoin(av[i], " ");
 		tmp_arg = ft_strjoin(args, av[i]);
 		free(args);
 		args = ft_strjoin(tmp_arg, " ");
@@ -92,27 +88,26 @@ void check_arg(int ac, char **av)
 	i = 0;
 	while (split[i])
 		printf("%s\n", split[i++]);
-	ft_free(split);
-	
-	
-	// if (ac == 1 || (ac == 2 && !av[1][0]))
-	// 	return (error_handling("Error!"));
-	// else if (2 == ac)
-	// {
-	// 	av = ft_split(av[1], ' ');
-	// 	i = 0;
-	// }
-	// while (av[i])
-	// {
-	// 	if (!is_num(av[i]))
-	// 		error_handling("Not a Number!");
-	// 	tmp = ft_atol(av[i]);
-	// 	if (tmp > 2147483647 || tmp < -2147483648)
-	// 		error_handling("Out of range!");
-	// 	if (is_duplicate(av))
-	// 		error_handling("Dublicate arguments!");
-	// 	i++;
-	// }
-	// if (ac == 2)
-	// 	ft_free(av);
+	return (split);
+}
+
+void check_arg(int ac, char **av)
+{
+	int		i;
+	long	tmp;
+	char	**args;
+
+	i = 0;
+	args = create_args(ac, av);
+	while (args[i])
+	{
+		if (!is_num(args[i]))
+			error_handling("Not a Number!");
+		tmp = ft_atol(args[i]);
+		if (tmp > 2147483647 || tmp < -2147483648)
+			error_handling("Out of range!");
+		if (is_duplicate(args))
+			error_handling("Dublicate arguments!");
+		i++;
+	}
 }

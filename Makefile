@@ -6,7 +6,7 @@
 #    By: nmunir <nmunir@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/10 15:18:50 by abashir           #+#    #+#              #
-#    Updated: 2023/09/19 14:23:13 by nmunir           ###   ########.fr        #
+#    Updated: 2023/09/20 15:17:37 by nmunir           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,4 +50,4 @@ norm:
 	norminette $(SRC)
 	cd lib/libft && make norm
 
-.PHONY: all clean fclaen re libft printf norm
+.PHONY: all clean fclaen re libft norm
