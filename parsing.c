@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmunir <nmunir@student.42.fr>              +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 17:53:25 by nmunir            #+#    #+#             */
-/*   Updated: 2023/09/20 14:43:46 by nmunir           ###   ########.fr       */
+/*   Updated: 2023/09/20 11:04:48 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ void check_arg(int ac, char **av)
 	i = 0;
 	while (split[i])
 		printf("%s\n", split[i++]);
+	ft_free(split);
 	
 	
 	// if (ac == 1 || (ac == 2 && !av[1][0]))

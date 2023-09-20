@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmunir <nmunir@student.42.fr>              +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 18:59:52 by nmunir            #+#    #+#             */
-/*   Updated: 2023/09/20 13:54:15 by nmunir           ###   ########.fr       */
+/*   Updated: 2023/09/20 11:06:50 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 # include <limits.h>
 # include <stdbool.h>
 # include "lib/libft/libft.h"
-# include "lib/ft_printf/ft_printf.h"
 
 typedef struct s_stack
 {

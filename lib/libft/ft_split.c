@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmunir <nmunir@student.42.fr>              +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 10:59:46 by nmunir            #+#    #+#             */
-/*   Updated: 2023/09/12 14:40:35 by nmunir           ###   ########.fr       */
+/*   Updated: 2023/09/20 11:00:41 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,8 @@
 
 static size_t	count_wrd(char const *s, char c)
 {
-	size_t	i;
 	size_t	word_count;
 
-	i = 0;
 	word_count = 0;
 	while (*s)
 	{

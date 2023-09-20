@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmunir <nmunir@student.42.fr>              +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 15:58:38 by nmunir            #+#    #+#             */
-/*   Updated: 2023/09/20 14:28:52 by nmunir           ###   ########.fr       */
+/*   Updated: 2023/09/20 11:03:57 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@ int	main(int ac, char **av)
 	// 	ft_sort_3(&a);
 	// else
 	// 	push_swap(&a, &b);
-	// print_stack(a);
+	// print_stack(a);)
 	return (0);
 }

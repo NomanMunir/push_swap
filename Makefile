@@ -26,35 +26,28 @@ SRC =	main.c \
 		operations/swaps.c \
 
 OBJ = $(SRC:.c=.o)
-ARC = lib/libft/libft.a lib/ft_printf/libftprintf.a
-CC = cc
+ARC = lib/libft/libft.a
 
 CFLAGS = -Wall -Werror -Wextra
 
-all: libft printf
+all: libft
 	$(CC) $(SRC) $(ARC) -o $(NAME)
 	
 libft: 
 	cd lib/libft && make
-	
-printf:
-	cd lib/ft_printf && make
 
 clean:
 	rm -f -v $(OBJ)
 	cd lib/libft && make clean
-	cd lib/ft_printf && make clean
 	
 fclean: clean
 	rm -f $(NAME)
 	cd lib/libft && make fclean
-	cd lib/ft_printf && make fclean
 
 re: fclean all
 
 norm:
 	norminette $(SRC)
 	cd lib/libft && make norm
-	cd lib/ft_printf && make norm
 
 .PHONY: all clean fclaen re libft printf norm
