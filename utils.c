@@ -101,3 +101,21 @@ t_stack *min(t_stack *stack)
 	}
 	return (smallest_node);
 }
+
+void ft_free_nodes(t_stack **a, t_stack **b)
+{
+	t_stack *tmp;
+
+	while (*a)
+	{
+		tmp = *a;
+		*a = (*a)->next;
+		free(tmp);
+	}
+	while (*b)
+	{
+		tmp = *b;
+		*b = (*b)->next;
+		free(tmp);
+	}
+}

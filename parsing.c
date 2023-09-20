@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmunir <nmunir@student.42.fr>              +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 17:53:25 by nmunir            #+#    #+#             */
-/*   Updated: 2023/09/20 15:16:56 by nmunir           ###   ########.fr       */
+/*   Updated: 2023/09/20 14:15:31 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,11 +72,13 @@ static char **create_args(int ac, char **av)
 	int		i;
 
 	i = 1;
+	if (ft_isspace(av[i]))
+		return (error_handling("Error!"), NULL);
+	args = ft_strjoin(av[i++], " ");
 	while(av[i])
 	{
 	if (ft_isspace(av[i]))
-		error_handling("Error!");
-		args = ft_strjoin(av[i], " ");
+		return (error_handling("Error!"), free(args), NULL);
 		tmp_arg = ft_strjoin(args, av[i]);
 		free(args);
 		args = ft_strjoin(tmp_arg, " ");
@@ -85,29 +87,37 @@ static char **create_args(int ac, char **av)
 	}
 	split = ft_split(args, ' ');
 	free(args);
-	i = 0;
-	while (split[i])
-		printf("%s\n", split[i++]);
 	return (split);
 }
 
-void check_arg(int ac, char **av)
+char **check_arg(int ac, char **av)
 {
 	int		i;
 	long	tmp;
 	char	**args;
 
 	i = 0;
-	args = create_args(ac, av);
+	args = av + 1;
 	while (args[i])
 	{
-		if (!is_num(args[i]))
-			error_handling("Not a Number!");
 		tmp = ft_atol(args[i]);
+		// while(*args[i])
+		// {
+		// 	if (*args[i] != '-' && *args[i] != '+' && !ft_isdigit(*args[i])
+		// 	&& *args[i] != ' ' && *args[i] != '\t')
+		// 		return (error_handling("Error!"), NULL);
+		// 	args[i]++;
+		// }
+		if (!is_num(args[i]) || ft_isspace(args[i]) || !args[i][0])
+			return (error_handling("Error!"), NULL);
 		if (tmp > 2147483647 || tmp < -2147483648)
-			error_handling("Out of range!");
+			return (error_handling("Out of range!"), NULL);
 		if (is_duplicate(args))
-			error_handling("Dublicate arguments!");
+			return (error_handling("Dublicate arguments!"), NULL);
 		i++;
 	}
+	args = create_args(ac, av);
+	if (!args)
+		return (error_handling("Error!"), NULL);
+	return (args);
 }

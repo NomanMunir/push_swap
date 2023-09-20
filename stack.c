@@ -25,31 +25,15 @@ static void	add_node(t_stack **stk, int value)
 	}
 }
 
-void	init_stack(int ac, char **av, t_stack **stk_a)
+void	init_stack(char **args, t_stack **stk_a)
 {
 	int i;
 
-	i = 1;
-	if (ac == 2)
+	i = 0;
+	while (args[i])
 	{
-		while (av[1][i])
-		{
-			if (av[1][i] == ' ')
-				i++;
-			else
-			{
-				add_node(stk_a, ft_atol(av[1] + i));
-				while (av[1][i] != ' ' && av[1][i])
-					i++;
-			}
-		}
+		add_node(stk_a, ft_atol(args[i]));
+		i++;
 	}
-	else
-	{
-		while (av[i])
-		{
-			add_node(stk_a, ft_atol(av[i]));
-			i++;
-		}
-	}
+	ft_free(args);
 }
