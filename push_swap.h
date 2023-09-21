@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 18:59:52 by nmunir            #+#    #+#             */
-/*   Updated: 2023/09/20 18:31:58 by codespace        ###   ########.fr       */
+/*   Updated: 2023/09/21 08:12:47 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void		print_stack(t_stack *stack);
 char		**check_arg(int ac, char **av);
 void		error_handling(char *error);
 void		ft_free(char **str);
-void		ft_free_nodes(t_stack **a);
+void		ft_free_nodes(t_stack **stk);
 void		init_stack(char **args, t_stack **stk_a);
 long		ft_atol(const char *str, int *error);
 void		sa(t_stack **stack_a);

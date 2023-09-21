@@ -131,16 +131,11 @@ long	ft_atol(const char *str, int *error)
 	while (ft_isdigit(*str))
 	{
 		if (nagetive && ((result * 10) + *str - '0') < result)
-		{
 			*error = 1;
-			return (0);
-		}
 		else if (!nagetive && ((result * 10) + *str - '0') < result)
-		{
 			*error = 1;
-			return (-1);
-		}
 		result = result * 10 + (*str++ - '0');
 	}
 	return (result * nagetive);
 }
+

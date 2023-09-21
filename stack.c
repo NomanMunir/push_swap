@@ -25,18 +25,43 @@ static void	add_node(t_stack **stk, int value)
 	}
 }
 
+int is_duplicate(t_stack **stk)
+{
+	t_stack *tmp;
+	t_stack *tmp2;
+
+	tmp = *stk;
+	while (tmp)
+	{
+		tmp2 = tmp->next;
+		while (tmp2)
+		{
+			if (tmp->value == tmp2->value)
+				return (1);
+			tmp2 = tmp2->next;
+		}
+		tmp = tmp->next;
+	}
+	return (0);
+}
+
 void	init_stack(char **args, t_stack **stk_a)
 {
-	int i;
-	int error;
+	int 	i;
+	int 	error;
+	long	temp;
 
 	error = 0;
 	i = 0;
-	
+	temp = 0;
 	while (args[i])
 	{
-		add_node(stk_a, ft_atol(args[i], &error));
+		temp = ft_atol(args[i], &error);
+		if (error == 1)
+			return (ft_free_nodes(stk_a), error_handling("Out of range!"));
+		add_node(stk_a, (int)temp);
 		i++;
 	}
-	ft_free(args);
+	if (is_duplicate(stk_a))
+		return (ft_free_nodes(stk_a), error_handling("Duplicate!"));
 }
