@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 11:01:08 by nmunir            #+#    #+#             */
-/*   Updated: 2023/09/21 15:30:41 by codespace        ###   ########.fr       */
+/*   Updated: 2023/09/21 19:32:31 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ char	*get_next_line(int fd)
 	static char	*rem_string;
 	char		*res;
 
+	rem_string = NULL;
 	if (BUFFER_SIZE <= 0 || fd < 0 || fd >= FD_MAX)
 		return (NULL);
 	rem_string = get_read_string(fd, rem_string);
