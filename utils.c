@@ -41,7 +41,7 @@ void print_stack(t_stack *stack)
 
 	while (stack)
 	{
-		// printf("current position: %d\n", stack->current_position);
+		// printf("current position: %d\n", stack->index);
 		printf("value: %d\n", stack->value);
 		// printf("above median: %d\n", stack->above_median);
 		// printf("cheapest: %d\n", stack->cheapest);
@@ -49,18 +49,6 @@ void print_stack(t_stack *stack)
 		// printf("*************************\n");
 		stack = stack->next;
 	}
-}
-void ft_free(char **str)
-{
-	int i;
-
-	i = 0;
-	while (str[i])
-	{
-		free(str[i]);
-		i++;
-	}
-	free(str);
 }
 
 t_stack	*max(t_stack *stack)
@@ -102,16 +90,16 @@ t_stack *min(t_stack *stack)
 	return (smallest_node);
 }
 
-void ft_free_nodes(t_stack **stk)
+bool	sorted(t_stack *stk)
 {
-	t_stack *tmp;
 
-	while (*stk)
+	while (stk->next)
 	{
-		tmp = *stk;
-		*stk = (*stk)->next;
-		free(tmp);
+		if (stk->value > stk->next->value)
+			return (false);
+		stk = stk->next;
 	}
+	return (true);
 }
 
 long	ft_atol(const char *str, int *error)

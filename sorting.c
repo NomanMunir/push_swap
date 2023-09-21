@@ -1,17 +1,5 @@
 #include "push_swap.h"
 
-static bool	sorted(t_stack *stk)
-{
-
-	while (stk->next)
-	{
-		if (stk->value > stk->next->value)
-			return (false);
-		stk = stk->next;
-	}
-	return (true);
-}
-
 void	ft_sort_3(t_stack **stk)
 {
 	t_stack	*max_node;
@@ -33,7 +21,6 @@ void ft_sort_5(t_stack **stk_a, t_stack **stk_b)
 	while(lstsize(*stk_a) > 3)
 	{
 		init_nodes(*stk_a, *stk_b);
-		// printf("%d", min(*stk_a)->value);
 		finish_rotations(stk_a, min(*stk_a), 'a');
 		pb(stk_b, stk_a);
 	}

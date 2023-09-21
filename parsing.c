@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: nmunir <nmunir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 17:53:25 by nmunir            #+#    #+#             */
-/*   Updated: 2023/09/21 08:40:23 by codespace        ###   ########.fr       */
+/*   Updated: 2023/09/21 14:47:42 by nmunir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static int is_num(char *str)
 			return (0);
 	tmp = ft_atol(str, &error);
 	if (tmp > 2147483647 || tmp < -2147483648 || error == 1)
-		return (error_handling("Out of range!"), 0);
+		return (0);
 	return (1);
 }
 
@@ -56,12 +56,12 @@ static char **create_args(int ac, char **av)
 
 	i = 1;
 	if (ft_isspace(av[i]))
-		return (error_handling("Error!"), NULL);
+		return (error_handling(), NULL);
 	args = ft_strjoin(av[i++], " ");
 	while(av[i])
 	{
 	if (ft_isspace(av[i]))
-		return (free(args), error_handling("Error!"), NULL);
+		return (free(args), error_handling(), NULL);
 		tmp_arg = ft_strjoin(args, av[i]);
 		free(args);
 		args = ft_strjoin(tmp_arg, " ");
@@ -70,7 +70,7 @@ static char **create_args(int ac, char **av)
 	}
 	split = ft_split(args, ' ');
 	if (!split)
-		return (error_handling("Error!"), NULL);
+		return (error_handling(), NULL);
 	free(args);
 	return (split);
 }
@@ -100,13 +100,13 @@ char	**check_arg(int ac, char **av)
 	args = av + 1;
 	while (args[i])
 		if (!check_valid(args[i++]))
-			return (error_handling("Error inValid!"), NULL);
+			return (error_handling(), NULL);
 	i = -1;
 	args = create_args(ac, av);
 	if (!args)
-		return (error_handling("Error!"), ft_free(args), NULL);
+		return (ft_free(args),error_handling(), NULL);
 	while(args[++i])
 		if (!is_num(args[i]))
-			return (error_handling("Invalid Argument Error!"), ft_free(args), NULL);
+			return (ft_free(args), error_handling(), NULL);
 	return (args);
 }

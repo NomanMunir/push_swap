@@ -6,7 +6,7 @@
 /*   By: nmunir <nmunir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 11:38:36 by nmunir            #+#    #+#             */
-/*   Updated: 2023/09/19 15:28:21 by nmunir           ###   ########.fr       */
+/*   Updated: 2023/09/21 16:59:43 by nmunir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void set_target(t_stack *stk_a, t_stack *stk_b)
 		while(tmp_a)
 		{
 			if(tmp_a->value > stk_b->value
-			&& tmp_a-> value < best_match)
+			&& tmp_a->value < best_match)
 			{
 				best_match = tmp_a->value;
 				target_node = tmp_a;
@@ -38,6 +38,8 @@ void set_target(t_stack *stk_a, t_stack *stk_b)
 			stk_b->target_node = target_node;
 		stk_b = stk_b->next;
 	}
+	// printf("best_match = %ld\n", best_match);
+	// printf("target_node = %d\n", target_node->value);
 }
 void set_price(t_stack *stk_a, t_stack *stk_b)
 {
@@ -48,15 +50,16 @@ void set_price(t_stack *stk_a, t_stack *stk_b)
 	len_b = lstsize(stk_b);
 	while (stk_b)
 	{
-		stk_b->push_price = stk_b->current_position;
+		stk_b->push_price = stk_b->index;
 		if (!(stk_b->above_median))
-			stk_b->push_price = len_b - (stk_b->current_position);
+			stk_b->push_price = len_b - (stk_b->index);
 		if (stk_b->target_node->above_median)
-			stk_b->push_price += stk_b->target_node->current_position;
+			stk_b->push_price += stk_b->target_node->index;
 		else
-			stk_b->push_price += len_a - (stk_b->target_node->current_position);
+			stk_b->push_price += len_a - (stk_b->target_node->index);
 		stk_b = stk_b->next;
 	}
+	// printf("push_price = %d\n", stk_b->push_price);
 }
 
 void set_cheapest(t_stack *stk_a, t_stack *stk_b)
@@ -66,6 +69,7 @@ void set_cheapest(t_stack *stk_a, t_stack *stk_b)
 	if (stk_b == NULL)
 		return ;
 	best_value = INT_MAX;
+	best_node = NULL;
 	while(stk_b)
 	{
 		if (stk_b->push_price < best_value)
@@ -75,8 +79,11 @@ void set_cheapest(t_stack *stk_a, t_stack *stk_b)
 		}
 		stk_b = stk_b->next;
 	}
-	best_node->cheapest = true;
+	if(best_node)
+		best_node->cheapest = true;
+	// printf("best_value = %ld\n", best_value);
 }
+
 void set_nodes_position(t_stack *stk)
 {
 	int middle;
@@ -88,7 +95,8 @@ void set_nodes_position(t_stack *stk)
 	middle = lstsize(stk) / 2;
 	while(stk)
 	{
-		stk->current_position = i;
+		stk->cheapest = false;
+		stk->index = i;
 		if (i <= middle)
 			stk->above_median = true;
 		else

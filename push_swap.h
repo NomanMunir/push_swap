@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: nmunir <nmunir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 18:59:52 by nmunir            #+#    #+#             */
-/*   Updated: 2023/09/21 08:12:47 by codespace        ###   ########.fr       */
+/*   Updated: 2023/09/21 15:33:18 by nmunir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 typedef struct s_stack
 {
 	int				value;
-	int				current_position;
+	int				index;
 	int				final_index;
 	int				push_price;
 	bool			above_median;
@@ -35,10 +35,11 @@ typedef struct s_stack
 
 void		print_stack(t_stack *stack);
 char		**check_arg(int ac, char **av);
-void		error_handling(char *error);
+void		error_handling();
 void		ft_free(char **str);
 void		ft_free_nodes(t_stack **stk);
 void		init_stack(char **args, t_stack **stk_a);
+bool		sorted(t_stack *stk);
 long		ft_atol(const char *str, int *error);
 void		sa(t_stack **stack_a);
 void		sb(t_stack **stack_b);
