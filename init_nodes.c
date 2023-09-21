@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_nodes.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmunir <nmunir@student.42.fr>              +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 11:38:36 by nmunir            #+#    #+#             */
-/*   Updated: 2023/09/21 16:59:43 by nmunir           ###   ########.fr       */
+/*   Updated: 2023/09/21 18:00:11 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,6 @@ void set_target(t_stack *stk_a, t_stack *stk_b)
 			stk_b->target_node = target_node;
 		stk_b = stk_b->next;
 	}
-	// printf("best_match = %ld\n", best_match);
-	// printf("target_node = %d\n", target_node->value);
 }
 void set_price(t_stack *stk_a, t_stack *stk_b)
 {
@@ -59,10 +57,9 @@ void set_price(t_stack *stk_a, t_stack *stk_b)
 			stk_b->push_price += len_a - (stk_b->target_node->index);
 		stk_b = stk_b->next;
 	}
-	// printf("push_price = %d\n", stk_b->push_price);
 }
 
-void set_cheapest(t_stack *stk_a, t_stack *stk_b)
+void set_cheapest(t_stack *stk_b)
 {
 	long	best_value;
 	t_stack	*best_node;
@@ -81,7 +78,6 @@ void set_cheapest(t_stack *stk_a, t_stack *stk_b)
 	}
 	if(best_node)
 		best_node->cheapest = true;
-	// printf("best_value = %ld\n", best_value);
 }
 
 void set_nodes_position(t_stack *stk)
@@ -112,5 +108,5 @@ void init_nodes(t_stack *stk_a, t_stack *stk_b)
 	set_nodes_position(stk_b);
 	set_target(stk_a, stk_b);
 	set_price(stk_a, stk_b);
-	set_cheapest(stk_a, stk_b);
+	set_cheapest(stk_b);
 }

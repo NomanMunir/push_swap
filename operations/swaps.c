@@ -12,20 +12,23 @@ static void swap(t_stack *stk)
 	}
 }
 
-void sb(t_stack **stack_b)
+void sb(t_stack **stack_b, int flag)
 {
 	swap(*stack_b);
-	ft_putstr_fd("sb\n", 1);
+	if (flag == 1)
+		ft_putendl_fd("sb", 1);
 }
 
-void sa(t_stack **stack_a)
+void sa(t_stack **stack_a, int flag)
 {
 	swap(*stack_a);
-	ft_putstr_fd("sa\n", 1);
+	if (flag)
+		ft_putendl_fd("sa", 1);
 }
-void ss(t_stack **stack_a, t_stack **stack_b)
+void ss(t_stack **stack_a, t_stack **stack_b, int flag)
 {
 	swap(*stack_a);
 	swap(*stack_b);
-	ft_putstr_fd("ss\n", 1);
+	if (flag)
+		ft_putendl_fd("ss", 1);
 }

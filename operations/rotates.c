@@ -13,21 +13,24 @@ static void	rotate(t_stack **stack)
 	last_node->next->next = NULL;
 }	
 
-void	ra(t_stack **a)
+void	ra(t_stack **a, int flag)
 {
 	rotate(a);
-	write(1, "ra\n", 3);
+	if (flag == 1)
+		ft_putendl_fd("ra", 1);
 }
 
-void	rb(t_stack **b)
+void	rb(t_stack **b, int flag)
 {
 	rotate(b);
-	write(1, "rb\n", 3);
+	if (flag == 1)
+		ft_putendl_fd("rb", 1);
 }
 
-void	rr(t_stack **a, t_stack **b)
+void	rr(t_stack **a, t_stack **b, int flag)
 {
 	rotate(a);
 	rotate(b);
-	write(1, "rr\n", 3);
+	if (flag == 1)
+		ft_putendl_fd("rr", 1);
 }

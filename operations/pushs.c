@@ -4,14 +4,14 @@ static void	push(t_stack **dest, t_stack **src)
 {
 	t_stack	*node;
 
-	if (NULL == *src)
+	if (!*src)
 		return ;
 	node = *src;
 	*src = (*src)->next;
 	if (*src)
 		(*src)->prev = NULL;
 	node->prev = NULL;
-	if (NULL == *dest)
+	if (!*dest)
 	{
 		*dest = node;
 		node->next = NULL;
@@ -24,14 +24,16 @@ static void	push(t_stack **dest, t_stack **src)
 	}
 }
 
-void	pa(t_stack **a, t_stack **b)
+void	pa(t_stack **a, t_stack **b, int flag)
 {
 	push(a, b);
-	write(1, "pa\n", 3);
+	if (flag == 1)
+		ft_putendl_fd("pa", 1);
 }
 
-void	pb(t_stack **b, t_stack **a)
+void	pb(t_stack **b, t_stack **a, int flag)
 {
 	push(b, a);
-	write(1, "pb\n", 3);
+	if (flag == 1)
+		ft_putendl_fd("pb", 1);
 }

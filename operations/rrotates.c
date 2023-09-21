@@ -13,21 +13,24 @@ static void	reverse_rotate(t_stack **stack)
 	last->next->prev = last;
 }
 
-void	rra(t_stack **a)
+void	rra(t_stack **a, int flag)
 {
 	reverse_rotate(a);
-	write(1, "rra\n", 4);
+	if (flag)
+		ft_putendl_fd("rra", 1);
 }
 
-void	rrb(t_stack **b)
+void	rrb(t_stack **b, int flag)
 {
 	reverse_rotate(b);
-	write(1, "rrb\n", 4);
+	if (flag)
+		ft_putendl_fd("rrb", 1);
 }
 
-void	rrr(t_stack **a, t_stack **b)
+void	rrr(t_stack **a, t_stack **b, int flag)
 {
 	reverse_rotate(a);
 	reverse_rotate(b);
-	write(1, "rrr\n", 4);
+	if (flag)
+		ft_putendl_fd("rrr", 1);
 }

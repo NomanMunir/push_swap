@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmunir <nmunir@student.42.fr>              +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 14:21:14 by nmunir            #+#    #+#             */
-/*   Updated: 2023/09/21 14:50:52 by nmunir           ###   ########.fr       */
+/*   Updated: 2023/09/21 17:59:35 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	rotate_both(t_stack **a, t_stack **b, \
 {
 	while (*a != cheapest_node->target_node
 		&& *b != cheapest_node)
-		rr(a, b);
+		rr(a, b, 1);
 	set_nodes_position(*a);
 	set_nodes_position(*b);
 }
@@ -29,16 +29,16 @@ void	finish_rotations(t_stack **stk, t_stack *top, char stack_name)
 		if (stack_name == 'a')
 		{
 			if (top->above_median)
-				ra(stk);
+				ra(stk, 1);
 			else
-				rra(stk);
+				rra(stk, 1);
 		}
 		else if (stack_name == 'b')
 		{
 			if (top->above_median)
-				rb(stk);
+				rb(stk, 1);
 			else
-				rrb(stk);
+				rrb(stk, 1);
 		}	
 	}
 }
@@ -49,7 +49,7 @@ static void	reverse_rotate_both(t_stack **a,
 {
 	while (*a != cheapest_node->target_node
 		&& *b != cheapest_node)
-		rrr(a, b);
+		rrr(a, b, 1);
 	set_nodes_position(*a);
 	set_nodes_position(*b);
 }
@@ -67,7 +67,7 @@ void move_nodes(t_stack **stk_a, t_stack **stk_b)
 		reverse_rotate_both(stk_a, stk_b, cheapest);
 	finish_rotations(stk_b, cheapest, 'b');
 	finish_rotations(stk_a, cheapest->target_node, 'a');
-	pa(stk_a, stk_b);
+	pa(stk_a, stk_b, 1);
 }
 
 void push_swap(t_stack **stk_a, t_stack **stk_b)
@@ -81,7 +81,7 @@ void push_swap(t_stack **stk_a, t_stack **stk_b)
 	else
 	{
 		while (len-- > 3)
-			pb(stk_b, stk_a);
+			pb(stk_b, stk_a, 1);
 	}
 	ft_sort_3(stk_a);
 	while(*stk_b)
@@ -93,8 +93,8 @@ void push_swap(t_stack **stk_a, t_stack **stk_b)
 	smallest = min(*stk_a);
 	if (smallest->above_median)
 		while (*stk_a != smallest)
-			ra(stk_a);
+			ra(stk_a, 1);
 	else
 		while (*stk_a != smallest)
-			rra(stk_a);
+			rra(stk_a, 1);
 }

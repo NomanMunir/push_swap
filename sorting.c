@@ -9,11 +9,11 @@ void	ft_sort_3(t_stack **stk)
 		return ;
 	max_node = max(*stk);
 	if (*stk == max_node)
-		ra(stk);
+		ra(stk, 1);
 	else if ((*stk)->next == max_node)
-		rra(stk);
+		rra(stk, 1);
 	if ((*stk)->value > (*stk)->next->value)
-		sa(stk);
+		sa(stk, 1);
 }
 
 void ft_sort_5(t_stack **stk_a, t_stack **stk_b)
@@ -22,6 +22,6 @@ void ft_sort_5(t_stack **stk_a, t_stack **stk_b)
 	{
 		init_nodes(*stk_a, *stk_b);
 		finish_rotations(stk_a, min(*stk_a), 'a');
-		pb(stk_b, stk_a);
+		pb(stk_b, stk_a, 1);
 	}
 }

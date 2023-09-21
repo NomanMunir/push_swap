@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmunir <nmunir@student.42.fr>              +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 17:53:25 by nmunir            #+#    #+#             */
-/*   Updated: 2023/09/21 14:47:42 by nmunir           ###   ########.fr       */
+/*   Updated: 2023/09/21 15:18:34 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int ft_isspace(char *str)
 	return (0);
 }
 
-static char **create_args(int ac, char **av)
+static char **create_args(char **av)
 {
 	char	*tmp_arg;
 	char	*args;
@@ -60,8 +60,8 @@ static char **create_args(int ac, char **av)
 	args = ft_strjoin(av[i++], " ");
 	while(av[i])
 	{
-	if (ft_isspace(av[i]))
-		return (free(args), error_handling(), NULL);
+		if (ft_isspace(av[i]))
+			return (free(args), error_handling(), NULL);
 		tmp_arg = ft_strjoin(args, av[i]);
 		free(args);
 		args = ft_strjoin(tmp_arg, " ");
@@ -91,7 +91,7 @@ static int check_valid(char *str)
 	return (1);
 }
 
-char	**check_arg(int ac, char **av)
+char	**check_arg(char **av)
 {
 	int		i;
 	char	**args;
@@ -102,7 +102,7 @@ char	**check_arg(int ac, char **av)
 		if (!check_valid(args[i++]))
 			return (error_handling(), NULL);
 	i = -1;
-	args = create_args(ac, av);
+	args = create_args(av);
 	if (!args)
 		return (ft_free(args),error_handling(), NULL);
 	while(args[++i])

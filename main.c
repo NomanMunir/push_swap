@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmunir <nmunir@student.42.fr>              +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 15:58:38 by nmunir            #+#    #+#             */
-/*   Updated: 2023/09/21 15:00:46 by nmunir           ###   ########.fr       */
+/*   Updated: 2023/09/21 17:57:04 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@ int	main(int ac, char **av)
 	b = NULL;
 	if (ac == 1)
 		return(0);
-	args = check_arg(ac, av);
+	args = check_arg(av);
 	init_stack(args, &a);
 	ft_free(args);
 	// print_stack(a);
 	if (sorted(a))
 		return (0);
 	if (lstsize(a) == 2)
-		sa(&a);
+		sa(&a, 1);
 	else if (lstsize(a) == 3)
 		ft_sort_3(&a);
 	else

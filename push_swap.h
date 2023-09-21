@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmunir <nmunir@student.42.fr>              +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 18:59:52 by nmunir            #+#    #+#             */
-/*   Updated: 2023/09/21 15:33:18 by nmunir           ###   ########.fr       */
+/*   Updated: 2023/09/21 17:47:23 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <limits.h>
 # include <stdbool.h>
 # include "lib/libft/libft.h"
+# include "lib/get_next_line/get_next_line.h"
 
 typedef struct s_stack
 {
@@ -34,24 +35,24 @@ typedef struct s_stack
 }					t_stack;
 
 void		print_stack(t_stack *stack);
-char		**check_arg(int ac, char **av);
+char		**check_arg(char **av);
 void		error_handling();
 void		ft_free(char **str);
 void		ft_free_nodes(t_stack **stk);
 void		init_stack(char **args, t_stack **stk_a);
 bool		sorted(t_stack *stk);
 long		ft_atol(const char *str, int *error);
-void		sa(t_stack **stack_a);
-void		sb(t_stack **stack_b);
-void		ss(t_stack **stack_a, t_stack **stack_b);
-void		rb(t_stack **stack_b);
-void		ra(t_stack **stack_a);
-void		pa(t_stack **stack_a, t_stack **stack_b);
-void		pb(t_stack **stack_a, t_stack **stack_b);
-void		rr(t_stack **stack_a, t_stack **stack_b);
-void		rra(t_stack **stack_a);
-void		rrb(t_stack **stack_b);
-void		rrr(t_stack **stack_a, t_stack **stack_b);
+void		sa(t_stack **stack_a, int flag);
+void		sb(t_stack **stack_b, int flag);
+void		ss(t_stack **stack_a, t_stack **stack_b, int flag);
+void		rb(t_stack **stack_b, int flag);
+void		ra(t_stack **stack_a, int flag);
+void		pa(t_stack **stack_a, t_stack **stack_b, int flag);
+void		pb(t_stack **stack_a, t_stack **stack_b, int flag);
+void		rr(t_stack **stack_a, t_stack **stack_b, int flag);
+void		rra(t_stack **stack_a, int flag);
+void		rrb(t_stack **stack_b, int flag);
+void		rrr(t_stack **stack_a, t_stack **stack_b, int flag);
 t_stack		*min(t_stack *stack);
 t_stack		*max(t_stack *stack);
 void		ft_sort_3(t_stack **stk);
@@ -62,7 +63,7 @@ t_stack		*lastnode(t_stack *stack);
 void		init_nodes(t_stack *stk_a, t_stack *stk_b);
 void		push_swap(t_stack **stk_a, t_stack **stk_b);
 void		set_nodes_position(t_stack *stk);
-void		set_cheapest(t_stack *stk_a, t_stack *stk_b);
+void		set_cheapest(t_stack *stk_b);
 void		set_price(t_stack *stk_a, t_stack *stk_b);
 void		set_target(t_stack *stk_a, t_stack *stk_b);
 void		move_nodes(t_stack **stk_a, t_stack **stk_b);
