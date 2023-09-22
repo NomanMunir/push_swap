@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 11:09:41 by nmunir            #+#    #+#             */
-/*   Updated: 2023/09/21 15:31:23 by codespace        ###   ########.fr       */
+/*   Updated: 2023/09/22 11:33:28 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,17 @@ int	ft_strlen_gnl(char *s)
 	return (i);
 }
 
-char	*is_include_nl(char *s, int c)
+int		is_include_nl(char *s, int c)
 {
 	int	i;
 
 	i = 0;
 	if (!s)
 		return (0);
-	if (c == '\0')
-		return ((char *)&s[ft_strlen_gnl(s)]);
 	while (s[i] != '\0')
 	{
 		if (s[i] == (char) c)
-			return ((char *)&s[i]);
+			return (1);
 		i++;
 	}
 	return (0);

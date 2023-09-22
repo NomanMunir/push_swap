@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 15:03:11 by codespace         #+#    #+#             */
-/*   Updated: 2023/09/21 19:35:21 by codespace        ###   ########.fr       */
+/*   Updated: 2023/09/22 11:26:09 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int main(int ac, char **av)
 		return (0);
 	args = check_arg(av);
 	init_stack(args, &a);
-	ft_free(args);
 	if(sorted(a))
 		return (ft_free_nodes(&a), 0);
 	len = lstsize(a);

@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 11:02:12 by nmunir            #+#    #+#             */
-/*   Updated: 2023/09/21 15:29:02 by codespace        ###   ########.fr       */
+/*   Updated: 2023/09/22 11:31:29 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 
 char	*get_next_line(int fd);
 int		ft_strlen_gnl(char *s);
-char	*is_include_nl(char *s, int c);
+int		is_include_nl(char *s, int c);
 char	*ft_strjoin_gnl(char *rem, char *buf);
 char	*get_new_rem_str(char *rem_str);
 char	*get_first_line(char *rem_str);

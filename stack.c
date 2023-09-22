@@ -58,10 +58,11 @@ void	init_stack(char **args, t_stack **stk_a)
 	{
 		temp = ft_atol(args[i], &error);
 		if (error == 1)
-			return (ft_free_nodes(stk_a), error_handling());
+			return (ft_free_nodes(stk_a), ft_free(args), error_handling());
 		add_node(stk_a, (int)temp);
 		i++;
 	}
 	if (is_duplicate(stk_a))
-		return (ft_free_nodes(stk_a), error_handling());
+		return (ft_free_nodes(stk_a), ft_free(args), error_handling());
+	ft_free(args);
 }
