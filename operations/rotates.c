@@ -1,8 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rotates.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nmunir <nmunir@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/22 21:32:19 by nmunir            #+#    #+#             */
+/*   Updated: 2023/09/22 21:33:35 by nmunir           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../push_swap.h"
 
 static void	rotate(t_stack **stack)
 {
 	t_stack	*last_node;
+
 	if (!stack || !*stack || lstsize(*stack) == 1)
 		return ;
 	last_node = lastnode(*stack);
@@ -11,7 +24,7 @@ static void	rotate(t_stack **stack)
 	(*stack)->prev = NULL;
 	last_node->next->prev = last_node;
 	last_node->next->next = NULL;
-}	
+}
 
 void	ra(t_stack **a, int flag)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: nmunir <nmunir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 11:09:41 by nmunir            #+#    #+#             */
-/*   Updated: 2023/09/22 11:33:28 by codespace        ###   ########.fr       */
+/*   Updated: 2023/09/22 21:46:46 by nmunir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_strlen_gnl(char *s)
 	return (i);
 }
 
-int		is_include_nl(char *s, int c)
+int	is_include_nl(char *s, int c)
 {
 	int	i;
 
@@ -31,7 +31,7 @@ int		is_include_nl(char *s, int c)
 		return (0);
 	while (s[i] != '\0')
 	{
-		if (s[i] == (char) c)
+		if (s[i] == (char)c)
 			return (1);
 		i++;
 	}
@@ -46,12 +46,13 @@ char	*ft_strjoin_gnl(char *rem, char *buf)
 	i = -1;
 	if (!rem)
 	{
-		rem = (char *) malloc(sizeof(char) * 1);
+		rem = (char *)malloc(sizeof(char) * 1);
 		if (rem == NULL)
 			return (NULL);
 		rem[0] = '\0';
 	}
-	joined_str = malloc(sizeof(char) * ((ft_strlen_gnl(rem) + ft_strlen_gnl(buf)) + 1));
+	joined_str = malloc(sizeof(char) * ((ft_strlen_gnl(rem)
+					+ ft_strlen_gnl(buf)) + 1));
 	if (joined_str == NULL)
 		return (NULL);
 	while (rem[++i] != '\0')
@@ -75,7 +76,7 @@ char	*get_first_line(char *rem_str)
 		i++;
 	if (rem_str[i] == '\n')
 		i++;
-	res = (char *) malloc(sizeof(char) * (1 + i));
+	res = (char *)malloc(sizeof(char) * (1 + i));
 	if (!res)
 		return (NULL);
 	i = -1;

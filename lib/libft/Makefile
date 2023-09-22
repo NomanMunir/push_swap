@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
+#    By: nmunir <nmunir@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/03 12:33:13 by nmunir            #+#    #+#              #
-#    Updated: 2023/09/20 17:52:32 by codespace        ###   ########.fr        #
+#    Updated: 2023/09/22 21:34:28 by nmunir           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,6 @@ fclean: clean
 re: fclean all
 
 norm:
-	norminette $(SRC)
+	norminette $(SRC) libft.h
 	
 .PHONY: all clean fclaen re norm

@@ -3,29 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   init_nodes.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: nmunir <nmunir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 11:38:36 by nmunir            #+#    #+#             */
-/*   Updated: 2023/09/21 18:00:11 by codespace        ###   ########.fr       */
+/*   Updated: 2023/09/22 21:37:53 by nmunir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void set_target(t_stack *stk_a, t_stack *stk_b)
+void	set_target(t_stack *stk_a, t_stack *stk_b)
 {
-	t_stack		*tmp_a;
-	t_stack		*target_node;
-	long		best_match;
+	t_stack	*tmp_a;
+	t_stack	*target_node;
+	long	best_match;
 
 	while (stk_b)
 	{
 		best_match = LONG_MAX;
 		tmp_a = stk_a;
-		while(tmp_a)
+		while (tmp_a)
 		{
-			if(tmp_a->value > stk_b->value
-			&& tmp_a->value < best_match)
+			if (tmp_a->value > stk_b->value && tmp_a->value < best_match)
 			{
 				best_match = tmp_a->value;
 				target_node = tmp_a;
@@ -39,7 +38,8 @@ void set_target(t_stack *stk_a, t_stack *stk_b)
 		stk_b = stk_b->next;
 	}
 }
-void set_price(t_stack *stk_a, t_stack *stk_b)
+
+void	set_price(t_stack *stk_a, t_stack *stk_b)
 {
 	int	len_a;
 	int	len_b;
@@ -59,15 +59,16 @@ void set_price(t_stack *stk_a, t_stack *stk_b)
 	}
 }
 
-void set_cheapest(t_stack *stk_b)
+void	set_cheapest(t_stack *stk_b)
 {
 	long	best_value;
 	t_stack	*best_node;
+
 	if (stk_b == NULL)
 		return ;
 	best_value = INT_MAX;
 	best_node = NULL;
-	while(stk_b)
+	while (stk_b)
 	{
 		if (stk_b->push_price < best_value)
 		{
@@ -76,20 +77,20 @@ void set_cheapest(t_stack *stk_b)
 		}
 		stk_b = stk_b->next;
 	}
-	if(best_node)
+	if (best_node)
 		best_node->cheapest = true;
 }
 
-void set_nodes_position(t_stack *stk)
+void	set_nodes_position(t_stack *stk)
 {
-	int middle;
-	int i;
+	int	middle;
+	int	i;
 
 	if (!stk)
 		return ;
 	i = 0;
 	middle = lstsize(stk) / 2;
-	while(stk)
+	while (stk)
 	{
 		stk->cheapest = false;
 		stk->index = i;
@@ -102,7 +103,7 @@ void set_nodes_position(t_stack *stk)
 	}
 }
 
-void init_nodes(t_stack *stk_a, t_stack *stk_b)
+void	init_nodes(t_stack *stk_a, t_stack *stk_b)
 {
 	set_nodes_position(stk_a);
 	set_nodes_position(stk_b);

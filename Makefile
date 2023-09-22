@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
+#    By: nmunir <nmunir@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/10 15:18:50 by abashir           #+#    #+#              #
-#    Updated: 2023/09/21 17:42:50 by codespace        ###   ########.fr        #
+#    Updated: 2023/09/22 21:55:54 by nmunir           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,8 +25,8 @@ SRC =	stack.c \
 		operations/rrotates.c \
 		operations/swaps.c \
 
-BSRC =	checker.c \
-		checker_utils.c \
+BSRC =	bonus_checker/checker.c \
+		bonus_checker/checker_utils.c \
 		lib/get_next_line/get_next_line.c \
 		lib/get_next_line/get_next_line_utils.c \
 
@@ -35,7 +35,7 @@ OBJ = $(SRC:.c=.o)
 BOBJ = $(BSRC:.c=.o)
 ARC = lib/libft/libft.a
 
-CC = gcc
+CC = cc
 CFLAGS = -Wall -Werror -Wextra
 
 all: libft $(OBJ)
@@ -61,7 +61,7 @@ fclean: clean
 re: fclean all
 
 norm:
-	norminette $(SRC)
+	norminette $(SRC) $(BSRC) $(INC) push_swap.h
 	cd lib/libft && make norm
 
 .PHONY: all clean fclean re libft norm bonus

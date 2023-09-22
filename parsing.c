@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: nmunir <nmunir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 17:53:25 by nmunir            #+#    #+#             */
-/*   Updated: 2023/09/21 15:18:34 by codespace        ###   ########.fr       */
+/*   Updated: 2023/09/22 21:38:45 by nmunir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int is_num(char *str)
+static int	is_num(char *str)
 {
 	int		i;
 	int		error;
@@ -35,9 +35,9 @@ static int is_num(char *str)
 	return (1);
 }
 
-int ft_isspace(char *str)
+int	ft_isspace(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i] && (str[i] == '\t' || str[i] == ' '))
@@ -47,7 +47,7 @@ int ft_isspace(char *str)
 	return (0);
 }
 
-static char **create_args(char **av)
+static char	**create_args(char **av)
 {
 	char	*tmp_arg;
 	char	*args;
@@ -58,7 +58,7 @@ static char **create_args(char **av)
 	if (ft_isspace(av[i]))
 		return (error_handling(), NULL);
 	args = ft_strjoin(av[i++], " ");
-	while(av[i])
+	while (av[i])
 	{
 		if (ft_isspace(av[i]))
 			return (free(args), error_handling(), NULL);
@@ -74,20 +74,21 @@ static char **create_args(char **av)
 	free(args);
 	return (split);
 }
-static int check_valid(char *str)
+
+static int	check_valid(char *str)
 {
 	int	i;
 
 	i = 0;
 	if (!str || *str == '\0' || ft_isspace(str))
 		return (0);
-	while(str[i])
-		{
-			if (str[i] != '-' && str[i] != '+' && !ft_isdigit(str[i])
+	while (str[i])
+	{
+		if (str[i] != '-' && str[i] != '+' && !ft_isdigit(str[i])
 			&& str[i] != ' ')
-				return (0);
-			i++;
-		}
+			return (0);
+		i++;
+	}
 	return (1);
 }
 
@@ -104,8 +105,8 @@ char	**check_arg(char **av)
 	i = -1;
 	args = create_args(av);
 	if (!args)
-		return (ft_free(args),error_handling(), NULL);
-	while(args[++i])
+		return (ft_free(args), error_handling(), NULL);
+	while (args[++i])
 		if (!is_num(args[i]))
 			return (ft_free(args), error_handling(), NULL);
 	return (args);

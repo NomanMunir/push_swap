@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmunir <nmunir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/11 15:58:38 by nmunir            #+#    #+#             */
-/*   Updated: 2023/09/22 21:50:30 by nmunir           ###   ########.fr       */
+/*   Created: 2023/09/21 15:03:11 by codespace         #+#    #+#             */
+/*   Updated: 2023/09/22 22:02:13 by nmunir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
 int	main(int ac, char **av)
 {
+	char	**args;
 	t_stack	*a;
 	t_stack	*b;
-	char	**args;
+	int		len;
 
 	a = NULL;
 	b = NULL;
@@ -24,14 +25,13 @@ int	main(int ac, char **av)
 		return (0);
 	args = check_arg(av);
 	init_stack(args, &a);
+	len = lstsize(a);
 	if (sorted(a))
 		return (ft_free_nodes(&a), 0);
-	if (lstsize(a) == 2)
-		sa(&a, 1);
-	else if (lstsize(a) == 3)
-		ft_sort_3(&a);
+	ft_input(&a, &b);
+	if (sorted(a) && lstsize(a) == len)
+		ft_putendl_fd("OK", 1);
 	else
-		push_swap(&a, &b);
-	ft_free_nodes(&a);
-	return (0);
+		ft_putendl_fd("KO", 1);
+	return (ft_free_nodes(&a), ft_free_nodes(&b), 0);
 }

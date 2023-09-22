@@ -1,4 +1,39 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stack.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nmunir <nmunir@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/22 21:41:59 by nmunir            #+#    #+#             */
+/*   Updated: 2023/09/22 21:44:18 by nmunir           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
+
+t_stack	*return_cheapest(t_stack *stack)
+{
+	if (!stack)
+		return (NULL);
+	while (stack)
+	{
+		if (stack->cheapest)
+			return (stack);
+		stack = stack->next;
+	}
+	return (NULL);
+}
+
+t_stack	*lastnode(t_stack *stack)
+{
+	t_stack	*tmp;
+
+	tmp = stack;
+	while (tmp->next)
+		tmp = tmp->next;
+	return (tmp);
+}
 
 static void	add_node(t_stack **stk, int value)
 {
@@ -13,10 +48,10 @@ static void	add_node(t_stack **stk, int value)
 	node->value = value;
 	node->next = NULL;
 	if (!(*stk))
-		{
-			*stk = node;
-			node->prev = NULL;
-		}
+	{
+		*stk = node;
+		node->prev = NULL;
+	}
 	else
 	{
 		last = lastnode(*stk);
@@ -25,10 +60,10 @@ static void	add_node(t_stack **stk, int value)
 	}
 }
 
-int is_duplicate(t_stack **stk)
+int	is_duplicate(t_stack **stk)
 {
-	t_stack *tmp;
-	t_stack *tmp2;
+	t_stack	*tmp;
+	t_stack	*tmp2;
 
 	tmp = *stk;
 	while (tmp)
@@ -47,8 +82,8 @@ int is_duplicate(t_stack **stk)
 
 void	init_stack(char **args, t_stack **stk_a)
 {
-	int 	i;
-	int 	error;
+	int		i;
+	int		error;
 	long	temp;
 
 	error = 0;
