@@ -1,22 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   checker_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmunir <nmunir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/10 18:15:53 by nmunir            #+#    #+#             */
-/*   Updated: 2023/09/18 14:20:26 by nmunir           ###   ########.fr       */
+/*   Created: 2023/09/21 15:03:11 by codespace         #+#    #+#             */
+/*   Updated: 2023/09/24 21:15:23 by nmunir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "checker_bonus.h"
 
-void	ft_lstadd_front(t_list **lst, t_list *new)
+int	main(int ac, char **av)
 {
-	if (lst || new)
-	{
-		new->next = *lst;
-		*lst = new;
-	}
+	char	**args;
+	t_stack	*a;
+	t_stack	*b;
+	int		len;
+
+	a = NULL;
+	b = NULL;
+	if (ac == 1)
+		return (0);
+	args = check_arg(av);
+	init_stack(args, &a);
+	len = lstsize(a);
+	ft_input(&a, &b);
+	if (sorted(a) && lstsize(a) == len)
+		ft_putendl_fd("OK", 1);
+	else
+		ft_putendl_fd("KO", 1);
+	return (ft_free_nodes(&a), ft_free_nodes(&b), 0);
 }
