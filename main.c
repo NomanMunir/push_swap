@@ -6,7 +6,7 @@
 /*   By: nmunir <nmunir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 15:58:38 by nmunir            #+#    #+#             */
-/*   Updated: 2023/09/24 21:21:59 by nmunir           ###   ########.fr       */
+/*   Updated: 2023/09/24 21:59:50 by nmunir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,12 @@ int	main(int ac, char **av)
 {
 	t_stack	*a;
 	t_stack	*b;
-	char	**args;
 
 	a = NULL;
 	b = NULL;
 	if (ac == 1)
 		return (0);
-	args = check_arg(av);
-	init_stack(args, &a);
+	init_stack(check_arg(av), &a);
 	if (sorted(a))
 		return (ft_free_nodes(&a), 0);
 	if (lstsize(a) == 2)

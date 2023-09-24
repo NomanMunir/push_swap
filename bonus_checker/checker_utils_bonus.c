@@ -6,7 +6,7 @@
 /*   By: nmunir <nmunir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 21:35:15 by nmunir            #+#    #+#             */
-/*   Updated: 2023/09/24 21:15:31 by nmunir           ###   ########.fr       */
+/*   Updated: 2023/09/24 21:57:54 by nmunir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ void	validate_command(char *line, t_stack **a, t_stack **b)
 	else if (!ft_strcmp(line, "rrr\n"))
 		rrr(a, b, 0);
 	else
-		return (free(line), ft_free_nodes(a), ft_free_nodes(b), error_handling());
+		return (free(line), ft_free_nodes(a), \
+		ft_free_nodes(b), error_handling());
 }
 
 void	ft_input(t_stack **a, t_stack **b)
