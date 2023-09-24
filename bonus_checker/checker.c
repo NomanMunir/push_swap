@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmunir <nmunir@student.42.fr>              +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 15:03:11 by codespace         #+#    #+#             */
-/*   Updated: 2023/09/22 22:02:13 by nmunir           ###   ########.fr       */
+/*   Updated: 2023/09/24 07:34:22 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ int	main(int ac, char **av)
 	args = check_arg(av);
 	init_stack(args, &a);
 	len = lstsize(a);
-	if (sorted(a))
-		return (ft_free_nodes(&a), 0);
 	ft_input(&a, &b);
 	if (sorted(a) && lstsize(a) == len)
 		ft_putendl_fd("OK", 1);

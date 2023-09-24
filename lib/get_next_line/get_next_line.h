@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 11:02:12 by nmunir            #+#    #+#             */
-/*   Updated: 2023/09/22 11:31:29 by codespace        ###   ########.fr       */
+/*   Updated: 2023/09/24 06:53:08 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <stdbool.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
+#  define BUFFER_SIZE 12
 # endif
 
 # ifndef FD_MAX

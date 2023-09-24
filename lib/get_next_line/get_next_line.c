@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 11:01:08 by nmunir            #+#    #+#             */
-/*   Updated: 2023/09/22 11:35:06 by codespace        ###   ########.fr       */
+/*   Updated: 2023/09/24 06:57:12 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,14 @@ char	*get_read_string(int fd, char *rem_string)
 	int		read_byt;
 
 	read_byt = 0;
-	buffer = (char *)malloc((long)(BUFFER_SIZE + 1) * sizeof(char));
-	if (!buffer)
+	buffer = malloc((long)(BUFFER_SIZE + 1) * sizeof(char));
+	if (buffer == NULL)
 		return (NULL);
 	while (!is_include_nl(rem_string, '\n'))
 	{
 		read_byt = read(fd, buffer, BUFFER_SIZE);
-		if (read_byt < 0 || !buffer[0])
-		{
-			free(buffer);
-			free(rem_string);
-			return (NULL);
-		}
+		if (read_byt <= 0 || !buffer[0])
+			return (free(buffer), free(rem_string), NULL);
 		buffer[read_byt] = '\0';
 		rem_string = ft_strjoin_gnl(rem_string, buffer);
 	}
